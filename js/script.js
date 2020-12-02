@@ -16,6 +16,7 @@ var app = new Vue ({
 
         searchFilm: function() {
             filmApi = 'https://api.themoviedb.org/3/search/movie?api_key=52d4b96c01f3627af936fa42e8430298&query=';
+            this.counter = 1;
             filmApi = filmApi + this.filmSelect + pageApi + '1';
             axios.get(filmApi)
             .then(film => {
