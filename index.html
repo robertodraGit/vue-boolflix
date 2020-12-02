@@ -28,7 +28,13 @@
                 <li 
                 v-for='film in filmArray'
                 class='card'>
-                    {{film.title}}
+                    <img :src="posterApi + film.poster_path" alt="poster film">
+                    <div class="sub-card">
+                        <p>{{film.title}}</p>
+                        <p>{{film.original_title}}</p>
+                        <p>{{film.original_language}}</p>
+                        <p>{{film.vote_average}}</p>
+                    </div>
                 </li>
             </ul>
 

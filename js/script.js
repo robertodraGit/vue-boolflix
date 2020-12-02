@@ -1,5 +1,6 @@
 var filmApi = 'https://api.themoviedb.org/3/search/movie?api_key=52d4b96c01f3627af936fa42e8430298&query=';
-var pageApi = '&page='
+var pageApi = '&page=';
+var posterApi = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
 var app = new Vue ({
     el: '#app',
@@ -33,8 +34,6 @@ var app = new Vue ({
             .then(film => {
                 this.filmArray = film.data.results;
                 this.filmPage = film.data.page;
-                this.filmPageTotal = film.data.total_pages;
-                this.filmTotal = film.data.total_results;
             })
         }
 
