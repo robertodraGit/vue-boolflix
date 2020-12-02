@@ -29,12 +29,25 @@ var app = new Vue ({
         },
 
         nextPage: function() {
-            filmApi = filmApi + this.filmSelect + pageApi + (++this.counter);
-            axios.get(filmApi)
-            .then(film => {
-                this.filmArray = film.data.results;
-                this.filmPage = film.data.page;
-            })
+            if (this.counter < this.filmPageTotal) {
+                filmApi = filmApi + this.filmSelect + pageApi + (++this.counter);
+                axios.get(filmApi)
+                .then(film => {
+                    this.filmArray = film.data.results;
+                    this.filmPage = film.data.page;
+                })
+            }
+        },
+
+        previousPage: function() {
+            if (this.counter >= 2) {
+                filmApi = filmApi + this.filmSelect + pageApi + (--this.counter);
+                axios.get(filmApi)
+                .then(film => {
+                    this.filmArray = film.data.results;
+                    this.filmPage = film.data.page;
+                })
+            }
         }
 
     }
