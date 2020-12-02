@@ -3,3 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.container-fluid {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.container-fluid ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.card {
+    width: calc(100%/3);
+}

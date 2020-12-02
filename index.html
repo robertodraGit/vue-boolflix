@@ -11,22 +11,45 @@
 <body>
     <div id='app'>
 
-        <input 
-        v-model='filmSelect'
-        placeholder="Cerca un film"
-        @keyup.enter='searchFilm'
-        type="text">
+        <div class="container-fluid">
 
-        <button
-        @click="searchFilm">
-        Cerca
-        </button>
+            <input 
+            v-model='filmSelect'
+            placeholder="Cerca un film"
+            @keyup.enter='searchFilm'
+            type="text">
 
-        <ul>
-            <li v-for='film in filmArray'>
-                {{film.title}}
-            </li>
-        </ul>
+            <button
+            @click="searchFilm">
+            Cerca
+            </button>
+
+            <ul>
+                <li 
+                v-for='film in filmArray'
+                class='card'>
+                    {{film.title}}
+                </li>
+            </ul>
+
+            <button
+            @click='nextPage'>
+                Pagina successiva
+            </button>
+
+            <span>
+                Pagina: {{filmPage}}
+            </span>
+            <br>
+            <span>
+                Pagine totali: {{filmPageTotal}}
+            </span>
+            <br>
+            <span>
+                Film trovati: {{filmTotal}}
+            </span>
+
+        </div>
 
     </div>
 
