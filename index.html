@@ -16,16 +16,17 @@
         <div class="container-fluid">
 
             <input 
-            v-model='filmSelect'
-            placeholder="Cerca un film"
-            @keyup.enter='searchFilm'
+            v-model='select'
+            placeholder="Cerca un film o serie TV"
+            @keyup.enter='searchFilm(); searchTv();'
             type="text">
 
             <button
-            @click="searchFilm">
+            @click="searchFilm(); searchTv();">
             Cerca
             </button>
 
+                <!-- ul films -->
             <ul>
                 <li 
                 v-for='(film, index) in filmArray'
@@ -34,8 +35,6 @@
                     <div class="sub-card">
                         <p>{{film.title}}</p>
                         <p>{{film.original_title}}</p>
-                        <p>{{film.original_name}}</p>
-                        <img :src="film.original_language" alt="">
                         <i 
                             v-for='vote in filmArray[index].vote_average' 
                             class="fas fa-star">
@@ -44,9 +43,12 @@
                             v-for='vote in (5 - filmArray[index].vote_average)' 
                             class="far fa-star">
                         </i>
+                        <br>
+                        <img :src="film.original_language" alt="">
                     </div>
                 </li>
             </ul>
+
             <button
             @click='previousPage'>
                 Pagina precedente
@@ -67,6 +69,49 @@
             <span>
                 Film trovati: {{filmTotal}}
             </span>
+
+                <!-- ul tv shows -->
+            <ul>
+                <li 
+                    v-for='(tvshow, index) in tvShowsArray'
+                    class='card-tvshow'>
+                    <img :src="posterApi + tvshow.poster_path"    alt="poster tvshow">
+                    <div class="sub-card">
+                        <p>{{tvshow.original_name}}</p>
+                        <p>{{tvshow.name}}</p>
+                        <img :src="tvshow.original_language" alt="">
+                        <i 
+                            v-for='vote in tvShowsArray[index].vote_average' 
+                            class="fas fa-star">
+                        </i>
+                        <i 
+                            v-for='vote in (5 - tvShowsArray[index].vote_average)' 
+                            class="far fa-star">
+                        </i>
+                    </div>
+                </li>
+            </ul>
+
+            <button
+            @click='previousPageTv'>
+                Pagina precedente
+            </button>
+            <button
+            @click='nextPageTv'>
+                Pagina successiva
+            </button>
+
+            <span>
+                Pagina: {{tvShowsPage}}
+            </span>
+            <br>
+            <span>
+                Pagine totali: {{tvShowsPageTotal}}
+            </span>
+            <br>
+            <span>
+                Film trovati: {{tvShowsTotal}}
+            </span> 
 
         </div>
 
