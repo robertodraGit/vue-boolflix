@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>Vue Boolflix</title>
@@ -26,14 +28,22 @@
 
             <ul>
                 <li 
-                v-for='film in filmArray'
+                v-for='(film, index) in filmArray'
                 class='card'>
                     <img :src="posterApi + film.poster_path" alt="poster film">
                     <div class="sub-card">
                         <p>{{film.title}}</p>
                         <p>{{film.original_title}}</p>
-                        <p>{{film.original_language}}</p>
-                        <p>{{film.vote_average}}</p>
+                        <p>{{film.original_name}}</p>
+                        <img :src="film.original_language" alt="">
+                        <i 
+                            v-for='vote in filmArray[index].vote_average' 
+                            class="fas fa-star">
+                        </i>
+                        <i 
+                            v-for='vote in (5 - filmArray[index].vote_average)' 
+                            class="far fa-star">
+                        </i>
                     </div>
                 </li>
             </ul>

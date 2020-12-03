@@ -7,6 +7,7 @@
 body {
     background-color: rgb(26, 26, 26);
     color: white;
+    font-family: Montserrat;
 }
 
 #app {
@@ -36,7 +37,7 @@ body {
     justify-content: space-between;
     width: calc(90%/4);
     height: 320px;
-    background: linear-gradient(90deg, #ffed9e 0%, #d1a618 100%);
+    background: linear-gradient(90deg, #f35010 0%, #d33535 100%);
     border-radius: 20px;
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -47,7 +48,7 @@ body {
     0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-.card img {
+.card > img:nth-of-type(1) {
     max-height: 200px;
     border-radius: 20px;
     box-shadow:

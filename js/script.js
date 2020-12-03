@@ -25,7 +25,32 @@ var app = new Vue ({
                 this.filmPage = film.data.page;
                 this.filmPageTotal = film.data.total_pages;
                 this.filmTotal = film.data.total_results;
+                this.halfVote();
+                this.flagLink();
             })
+            
+        },
+
+        flagLink: function() {
+            let i = 0;
+            while (i < this.filmArray.length) {
+                if (this.filmArray[i].original_language === 'en') {
+                    this.filmArray[i].original_language = 'us';
+                }
+                this.filmArray[i].original_language = 
+                    'https://www.countryflags.io/' + 
+                    this.filmArray[i].original_language + 
+                    '/shiny/32.png';
+                    i++;
+            }
+        },
+
+        halfVote: function() {
+            let i = 0;
+                while (i < this.filmArray.length) {
+                    this.filmArray[i].vote_average = Math.round(this.filmArray[i].vote_average / 2);
+                    i++;
+                }
         },
 
         nextPage: function() {
@@ -35,6 +60,8 @@ var app = new Vue ({
                 .then(film => {
                     this.filmArray = film.data.results;
                     this.filmPage = film.data.page;
+                    this.halfVote();
+                    this.flagLink();
                 })
             }
         },
@@ -46,6 +73,8 @@ var app = new Vue ({
                 .then(film => {
                     this.filmArray = film.data.results;
                     this.filmPage = film.data.page;
+                    this.halfVote();
+                    this.flagLink();
                 })
             }
         }
