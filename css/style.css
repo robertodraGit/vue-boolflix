@@ -50,6 +50,7 @@ body {
 
 .card > img:nth-of-type(1) {
     max-height: 200px;
+    max-width: 135px;
     border-radius: 20px;
     box-shadow:
     0 1.4px 1.2px rgba(0, 0, 0, 0.034),
@@ -79,6 +80,7 @@ body {
 
 .card-tvshow > img:nth-of-type(1) {
     max-height: 200px;
+    max-width: 135px;
     border-radius: 20px;
     box-shadow:
     0 1.4px 1.2px rgba(0, 0, 0, 0.034),

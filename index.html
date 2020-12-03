@@ -31,7 +31,11 @@
                 <li 
                 v-for='(film, index) in filmArray'
                 class='card'>
-                    <img :src="posterApi + film.poster_path" alt="poster film">
+                    <img
+                    :src="posterApi + film.poster_path"
+                    onerror="this.src=altPoster;" 
+                    alt="poster"
+                    >
                     <div class="sub-card">
                         <p>{{film.title}}</p>
                         <p>{{film.original_title}}</p>
@@ -75,7 +79,10 @@
                 <li 
                     v-for='(tvshow, index) in tvShowsArray'
                     class='card-tvshow'>
-                    <img :src="posterApi + tvshow.poster_path"    alt="poster tvshow">
+                    <img :src="posterApi + tvshow.poster_path"    
+                    onerror="this.src=altPoster;" 
+                    alt="poster"
+                    >
                     <div class="sub-card">
                         <p>{{tvshow.original_name}}</p>
                         <p>{{tvshow.name}}</p>
@@ -110,7 +117,7 @@
             </span>
             <br>
             <span>
-                Film trovati: {{tvShowsTotal}}
+                Serie TV trovate: {{tvShowsTotal}}
             </span> 
 
         </div>

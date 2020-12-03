@@ -2,6 +2,7 @@ var movieApi = 'https://api.themoviedb.org/3/search/movie?api_key=52d4b96c01f362
 var tvShowsApi = 'https://api.themoviedb.org/3/search/tv?api_key=52d4b96c01f3627af936fa42e8430298&query=';
 var pageApi = '&page=';
 var posterApi = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
+const altPoster = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';
 
 var app = new Vue ({
     el: '#app',
@@ -16,7 +17,7 @@ var app = new Vue ({
        filmTotal: 0,
        tvShowsTotal: 0,
        counter: 1,
-       counterTv: 1
+       counterTv: 1       
     },
 
     methods: {
@@ -36,6 +37,7 @@ var app = new Vue ({
         },
 
         searchTv: function() {
+            this.resetApi();
             tvShowsApi = tvShowsApi + this.select + pageApi + '1';
             axios.get(tvShowsApi)
             .then(tv => {
@@ -50,7 +52,7 @@ var app = new Vue ({
 
         resetApi: function() {
             movieApi = 'https://api.themoviedb.org/3/search/movie?api_key=52d4b96c01f3627af936fa42e8430298&query=';
-            tvShowApi = 'https://api.themoviedb.org/3/search/tv?api_key=52d4b96c01f3627af936fa42e8430298&query=';
+            tvShowsApi = 'https://api.themoviedb.org/3/search/tv?api_key=52d4b96c01f3627af936fa42e8430298&query=';
             this.counter = 1;
             this.counterTv = 1;
         },
@@ -150,6 +152,5 @@ var app = new Vue ({
                 })
             }
         }
-
     }
 })
