@@ -15,16 +15,25 @@
 
         <div class="container-fluid">
 
-            <input 
-            v-model='select'
-            placeholder="Cerca un film o serie TV"
-            @keyup.enter='searchFilm(); searchTv();'
-            type="text">
+            <div class="sub-one">
 
-            <button
-            @click="searchFilm(); searchTv();">
-            Cerca
-            </button>
+                <h3>BOOLFLIX</h3>
+                <div>
+                    <i class="fas fa-search"></i>
+                    <input 
+                    v-model='select'
+                    placeholder="Cerca un film o serie TV"
+                    @keyup.enter='searchFilm(); searchTv();'
+                    type="text">
+
+                    <button
+                    @click="searchFilm(); searchTv();">
+                    Cerca
+                    </button> 
+
+                </div>
+                
+            </div>
 
             <!-- div for no-results -->
 

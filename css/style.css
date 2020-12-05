@@ -16,7 +16,38 @@ body {
 }
 
 .container-fluid {
+    margin-top: 1rem;
     width: 80%;
+}
+
+.sub-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-one > h3 {
+    font-size: 2rem;
+    color: red;
+    transition: font-size 0.15s, text-shadow 0.25s;
+
+}
+
+.sub-one > h3:hover {
+    font-size: 2.3rem;
+    text-shadow: 1.5px 1.5px 4px #FF0000;
+}
+
+.sub-one input {
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 6px;
+}
+
+.sub-one button {
+    font-size: 1.5rem;
+    border-radius: 6px;
+    padding: 0 2rem;
 }
 
 .no-results {
@@ -41,16 +72,12 @@ body {
 
 .container-fluid ul li {
     margin-top: 3rem;
-    padding: 1rem;
 }
 
 .card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(90%/4);
+    position: relative;
+    width: calc(90%/5);
     height: 320px;
-    background: linear-gradient(90deg, #f35010 0%, #d33535 100%);
     border-radius: 20px;
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -62,25 +89,15 @@ body {
 }
 
 .card > img:nth-of-type(1) {
-    max-height: 200px;
-    max-width: 135px;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
-    box-shadow:
-    0 1.4px 1.2px rgba(0, 0, 0, 0.034),
-    0 3.7px 2.3px rgba(0, 0, 0, 0.048),
-    0 6.5px 5px rgba(0, 0, 0, 0.06),
-    0 11.3px 9.9px rgba(0, 0, 0, 0.072),
-    0 20.8px 16.4px rgba(0, 0, 0, 0.086),
-    0 50px 40px rgba(0, 0, 0, 0.12);
 }
 
 .card-tvshow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(90%/4);
+    position: relative;
+    width: calc(90%/5);
     height: 320px;
-    background: linear-gradient(90deg, #6814b6 0%, #5112ff 100%);
     border-radius: 20px;
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -92,18 +109,24 @@ body {
 }
 
 .card-tvshow > img:nth-of-type(1) {
-    max-height: 200px;
-    max-width: 135px;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
-    box-shadow:
-    0 1.4px 1.2px rgba(0, 0, 0, 0.034),
-    0 3.7px 2.3px rgba(0, 0, 0, 0.048),
-    0 6.5px 5px rgba(0, 0, 0, 0.06),
-    0 11.3px 9.9px rgba(0, 0, 0, 0.072),
-    0 20.8px 16.4px rgba(0, 0, 0, 0.086),
-    0 50px 40px rgba(0, 0, 0, 0.12);
 }
 
 .sub-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(90deg, #6814b6 0%, #5112ff 100%);
     text-align: right;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.sub-card:hover {
+    opacity: 1;
 }
