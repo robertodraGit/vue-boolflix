@@ -26,6 +26,15 @@
             Cerca
             </button>
 
+            <!-- div for no-results -->
+
+            <div
+            v-if="!filmArray.length"
+            class="no-results">
+                    <i class="fab fa-searchengin"></i>
+                    <h3>Nessun film disponibile</h3>
+            </div>
+
                 <!-- ul films -->
             <ul>
                 <li 
@@ -54,25 +63,36 @@
             </ul>
 
             <button
+            v-if="filmArray.length"
             @click='previousPage'>
                 Pagina precedente
             </button>
             <button
+            v-if="filmArray.length"
             @click='nextPage'>
                 Pagina successiva
             </button>
 
-            <span>
+            <span v-if="filmArray.length">
                 Pagina: {{filmPage}}
             </span>
             <br>
-            <span>
+            <span v-if="filmArray.length">
                 Pagine totali: {{filmPageTotal}}
             </span>
             <br>
-            <span>
+            <span v-if="filmArray.length">
                 Film trovati: {{filmTotal}}
             </span>
+
+            <!-- div for no-results -->
+
+            <div
+            v-if="!tvShowsArray.length"
+            class="no-results">
+                    <i class="fab fa-searchengin"></i>
+                    <h3>Nessuna serie Tv disponibile</h3>
+            </div>
 
                 <!-- ul tv shows -->
             <ul>
@@ -100,23 +120,25 @@
             </ul>
 
             <button
+            v-if="tvShowsArray.length"
             @click='previousPageTv'>
                 Pagina precedente
             </button>
             <button
+            v-if="tvShowsArray.length"
             @click='nextPageTv'>
                 Pagina successiva
             </button>
 
-            <span>
+            <span v-if="tvShowsArray.length">
                 Pagina: {{tvShowsPage}}
             </span>
             <br>
-            <span>
+            <span v-if="tvShowsArray.length">
                 Pagine totali: {{tvShowsPageTotal}}
             </span>
             <br>
-            <span>
+            <span v-if="tvShowsArray.length">
                 Serie TV trovate: {{tvShowsTotal}}
             </span> 
 

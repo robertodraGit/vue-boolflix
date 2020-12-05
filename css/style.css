@@ -19,6 +19,19 @@ body {
     width: 80%;
 }
 
+.no-results {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 15rem;
+    flex-direction: column;
+}
+
+.no-results > h3 {
+    font-size: 3rem;
+}
+
 .container-fluid ul {
     display: flex;
     justify-content: space-between;
