@@ -15,16 +15,34 @@
 
         <div class="container-fluid">
 
-            <input 
-            v-model='select'
-            placeholder="Cerca un film o serie TV"
-            @keyup.enter='searchFilm(); searchTv();'
-            type="text">
+            <div class="sub-one">
 
-            <button
-            @click="searchFilm(); searchTv();">
-            Cerca
-            </button>
+                <h3>BOOLFLIX</h3>
+                <div>
+                    <i class="fas fa-search"></i>
+                    <input 
+                    v-model='select'
+                    placeholder="Cerca un film o serie TV"
+                    @keyup.enter='searchFilm(); searchTv();'
+                    type="text">
+
+                    <button
+                    @click="searchFilm(); searchTv();">
+                    Cerca
+                    </button> 
+
+                </div>
+                
+            </div>
+
+            <!-- div for no-results -->
+
+            <div
+            v-if="!filmArray.length"
+            class="no-results">
+                    <i class="fab fa-searchengin"></i>
+                    <h3>Nessun film disponibile</h3>
+            </div>
 
                 <!-- ul films -->
             <ul>
@@ -39,40 +57,56 @@
                     <div class="sub-card">
                         <p>{{film.title}}</p>
                         <p>{{film.original_title}}</p>
-                        <i 
+                        <div>
+                            <i 
                             v-for='vote in filmArray[index].vote_average' 
                             class="fas fa-star">
-                        </i>
-                        <i 
-                            v-for='vote in (5 - filmArray[index].vote_average)' 
-                            class="far fa-star">
-                        </i>
+                            </i>
+                            <i 
+                                v-for='vote in (5 - filmArray[index].vote_average)' 
+                                class="far fa-star">
+                            </i>
+                        </div>
+                        
                         <br>
                         <img :src="film.original_language" alt="">
+                        <p v-if="film.overview != ''">Overview:</p>
+                        <p>{{film.overview}}</p>
                     </div>
                 </li>
             </ul>
 
             <button
+            v-if="filmArray.length"
             @click='previousPage'>
                 Pagina precedente
             </button>
             <button
+            v-if="filmArray.length"
             @click='nextPage'>
                 Pagina successiva
             </button>
 
-            <span>
+            <span v-if="filmArray.length">
                 Pagina: {{filmPage}}
             </span>
             <br>
-            <span>
+            <span v-if="filmArray.length">
                 Pagine totali: {{filmPageTotal}}
             </span>
             <br>
-            <span>
+            <span v-if="filmArray.length">
                 Film trovati: {{filmTotal}}
             </span>
+
+            <!-- div for no-results -->
+
+            <div
+            v-if="!tvShowsArray.length"
+            class="no-results">
+                    <i class="fab fa-searchengin"></i>
+                    <h3>Nessuna serie Tv disponibile</h3>
+            </div>
 
                 <!-- ul tv shows -->
             <ul>
@@ -87,36 +121,43 @@
                         <p>{{tvshow.original_name}}</p>
                         <p>{{tvshow.name}}</p>
                         <img :src="tvshow.original_language" alt="">
-                        <i 
+                        <div>
+                            <i 
                             v-for='vote in tvShowsArray[index].vote_average' 
                             class="fas fa-star">
-                        </i>
-                        <i 
-                            v-for='vote in (5 - tvShowsArray[index].vote_average)' 
-                            class="far fa-star">
-                        </i>
+                            </i>
+                            <i 
+                                v-for='vote in (5 - tvShowsArray[index].vote_average)' 
+                                class="far fa-star">
+                            </i>
+                        </div>
+
+                        <p v-if="film.overview != ''">Overview:</p>
+                        <p>{{tvshow.overview}}</p>
                     </div>
                 </li>
             </ul>
 
             <button
+            v-if="tvShowsArray.length"
             @click='previousPageTv'>
                 Pagina precedente
             </button>
             <button
+            v-if="tvShowsArray.length"
             @click='nextPageTv'>
                 Pagina successiva
             </button>
 
-            <span>
+            <span v-if="tvShowsArray.length">
                 Pagina: {{tvShowsPage}}
             </span>
             <br>
-            <span>
+            <span v-if="tvShowsArray.length">
                 Pagine totali: {{tvShowsPageTotal}}
             </span>
             <br>
-            <span>
+            <span v-if="tvShowsArray.length">
                 Serie TV trovate: {{tvShowsTotal}}
             </span> 
 
